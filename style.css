@@ -26,7 +26,7 @@ header {
     margin-bottom: 0%;
 }
 
-#board {
+tr {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -34,11 +34,11 @@ header {
     margin: 0 auto;
 }
 
-.cell {
+td {
     color: white;
     font-family: barlow;
     background-color: #303134;
-    font-size: 140px;
-    padding: 40px;
+    font-size: 100px;
+    padding: 70px;
     outline: 5px solid white;
 }
