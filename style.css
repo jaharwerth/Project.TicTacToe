@@ -1,27 +1,44 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    margin: 0 auto;
+}
+
+.players {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    font-family: barlow;
+    font-size: 18px;
 }
 
 .title {
     font-family: barlow;
     font-size: 36px;
+    margin-bottom: 0%;
 }
 
-table {
+#board {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 600px;
+    margin: 0 auto;
 }
 
-td {
+.cell {
     color: white;
     font-family: barlow;
     background-color: #303134;
     font-size: 140px;
     padding: 40px;
+    outline: 5px solid white;
 }

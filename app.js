@@ -1,53 +1,57 @@
-// state
-let initialState;
-
-function buildInitialState() {}
-
-// render
-function renderState() {}
-
-// maybe a dozen or so helper functions for tiny pieces of the interface
-
-// listeners
-function onBoardClick() {
-  // update state, maybe with another dozen or so helper functions...
-
-  renderState(); // show the user the new state
-}
-const board = document.getElementById("board");
-board.addEventListener("click", onBoardClick); // etc
+const gameArea = document.getElementById("board");
 
 const gameState = {
-  players: ["x", "o"],
-  board: [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ],
-};
+    players: ["X", "O"],
+    board: [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+    ],
+    activePlayer: 0,
+  }
 
-let ticTacToe = {
-  board: [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ],
+gameArea.addEventListener("click", boardClick(clickEvent));
 
-  move: function (letter, rowNum, columnNum) {
-    if (this.board[rowNum][columnNum] === null) {
-      this.board[rowNum][columnNum] = letter;
+function boardClick(clickEvent) {
+    updateBoard()
+    displayBoard()
+    let win = checkForWin()
+    if (win) {
+        updateWin()
     }
+    else {
+        changeTurn()
+    }
+}
 
-    return this.board;
-  },
+// save the play in memory
+function updateBoard(clickEvent) {
+    let newBoard = []
+    if (this.board)
 
-  clear: function () {
-    this.board = [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null],
-    ];
 
-    return this.board;
-  },
-};
+    return newBoard
+}
+
+// use memory to update user facing display (html)
+function displayBoard(clickEvent) {}
+
+// see if any win condition is fulfilled, similar to sudoku in checking the output of rows, columns, and diagonals
+function checkForWin() {
+    includesThree()
+}
+
+// helps checkForWin, looks for three in a row
+function includesThree() {}
+
+function updateWin() {}
+
+// 
+function changeTurn() {
+    if (activePlayer === 1) {
+        gameState.activePlayer = 0;
+    }
+    else {
+        gameState.activePlayer = 1;
+    }
+}
