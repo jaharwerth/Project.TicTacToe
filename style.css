@@ -26,6 +26,10 @@ header {
     margin-bottom: 0%;
 }
 
+/* #board {
+    width: ;
+} */
+
 tr {
     display: flex;
     justify-content: center;
@@ -37,8 +41,12 @@ tr {
 td {
     color: white;
     font-family: barlow;
+    font-size: 52px;
     background-color: #303134;
-    font-size: 100px;
-    padding: 70px;
+    /* padding: 50px 0; */
     outline: 5px solid white;
+    width: 6rem;
+    height: 6rem;
+    text-align: center;
+    padding-top: 20px;
 }
