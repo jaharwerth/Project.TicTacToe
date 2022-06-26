@@ -8,15 +8,19 @@
     <script defer src="app.js"></script>
     <title>Tic Tac Toe</title>
   </head>
+  <header>
+    <p class="title">Tic-Tac-Toe</p>
+    <section class="players">
+        <label>Player 1:</label>
+        <input type="text" id="player-one">
+        <label>Player 2:</label>
+        <input type="text" id="player-two">
+    </section>
+  </header>
   <body>
-    <header>
-      <p class="title">Tic-Tac-Toe</p>
-      <section class="players">
-        <p>player 1</p>
-        <p>player 2</p>
-      </section>
-    </header>
+    <form>
     <table id = "board">
+      <p id = "endingMessage"></p>
       <tr>
         <td></td>
         <td></td>
@@ -33,5 +37,9 @@
         <td></td>
       </tr>
     </table>
+    <button onclick="clearTable()">Reset board</button>
+    </form>
   </body>
+  <footer>
+  </footer>
 </html>

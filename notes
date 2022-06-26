@@ -1,0 +1,16 @@
+I need to creat a Tic Tac Toe board that does the following:
+    1✔) type in usernames for Player 1 and Player 2 
+    2✔) click the board to either put an "x" or an "o"
+        a✔. "x" is Player 1
+        b✔. "o" is Player 2
+        c✔. you shouldn't be able to click an already filled space
+    3✔) with every click, determine whether it was a winning move
+        a✔. check for three in a row:
+            -✔ column
+            -✔ row
+            -✔ diagonal x2
+    4) if there is a winner, say "Congratulations!"
+    5) if every space is filled but no one wins, say "Draw"
+    6) create a restart button that clears the game and starts over
+        a. clears the board
+        b. clears the usernames 

@@ -18,17 +18,45 @@ header {
     justify-content: space-between;
     font-family: barlow;
     font-size: 18px;
+    padding: 20px;
+}
+
+label {
+    padding-right: 10px;
+}
+
+#player-one,
+#player-two {
+    color: black;
+    border-radius: 10px;
+    outline: 2px solid black;
+}
+
+#player-one {
+    margin-right: 30px;
 }
 
 .title {
     font-family: barlow;
     font-size: 36px;
     margin-bottom: 0%;
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
 }
 
-/* #board {
-    width: ;
-} */
+#endingMessage {
+    font-family: Barlow;
+    font-size: 48px;
+    margin: 10px;
+}
+
+#board {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
 
 tr {
     display: flex;
@@ -41,12 +69,25 @@ tr {
 td {
     color: white;
     font-family: barlow;
-    font-size: 52px;
+    font-size: 85px;
     background-color: #303134;
-    /* padding: 50px 0; */
     outline: 5px solid white;
-    width: 6rem;
-    height: 6rem;
+    width: 10rem;
+    height: 10rem;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 40px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+body {
+    text-align: center;
+}
+
+button {
+    margin-top: 30px;
 }
