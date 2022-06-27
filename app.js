@@ -6,10 +6,8 @@ const gameState = {
     [null, null, null],
   ],
   activePlayer: 0,
-  endingMessage: ["Congratulations!", "Draw"]
 };
 
-// switch from player to player
 function changeTurn() {
   if (gameState.activePlayer === 0) {
     gameState.activePlayer = 1;
@@ -18,19 +16,20 @@ function changeTurn() {
   }
 }
 
-// saves the play in memory
+// function clearBoard(board) {
+//   for (let i = 0; i < board.length; i ++) {
+//     board[i][0] = null;
+//     board[i][1] = null;
+//     board[i][2] = null;
+//   }
+// }
+
 function updateGameState(event) {
   if (!event.target.innerHTML) {
-    event.target.innerHTML = gameState.players[gameState.activePlayer]
-    changeTurn()
+    event.target.innerHTML = gameState.players[gameState.activePlayer];
+    changeTurn();
   }
 }
-
-// let x1 = [
-//   ["x", "o", "x"],
-//   ["x", "o", "o"],
-//   ["o", "x", "x"],
-// ] 
 
 function getRow(board, rowIndex) {
   let rowString = "";
@@ -40,92 +39,99 @@ function getRow(board, rowIndex) {
   }
   return rowString;
 }
-// console.log(getRow(x1, 0));
 
 function getColumn(board, columnIndex) {
-  let columnArray = [];
+  let columnString = "";
   for (let i = 0; i < board.length; i++) {
     let column = board[i][columnIndex];
-    columnArray += column;
+    columnString += column;
     }
-  return columnArray;
+  return columnString;
 }
-// console.log(getColumn(x1, 0))
 
 function getDiagonalLeft(board) {
-  let DiagonalLeftArray = []
-  DiagonalLeftArray += board[0][0] + board[1][1] + board[2][2]
-  return DiagonalLeftArray
+  let DiagonalLeftString = "";
+  DiagonalLeftString += board[0][0] + board[1][1] + board[2][2];
+  return DiagonalLeftString;
 }
-// console.log(getDiagonalLeft(x1))
 
 function getDiagonalRight(board) {
-  let DiagonalRightArray = []
-  DiagonalRightArray += board[0][2] + board[1][1] + board[2][0]
-  return DiagonalRightArray
+  let DiagonalRightString = "";
+  DiagonalRightString += board[0][2] + board[1][1] + board[2][0];
+  return DiagonalRightString;
 }
-// console.log(getDiagonalRight(x1))
 
-function includesThree(array) {
-  let returnVal = true;
-  if (array === "xxx") {}
-  else if (array === "ooo") {}
+function includesThree(str) {
+  if (str === "xxx") {}
+  else if (str === "ooo") {}
   else {
-    return false
+    return false;
   }
-  return returnVal;
+  return true;
 }
-// console.log(includesThree(getRow(x1, 0)))
 
 function checkForWin(board) {
-  let returnVal = true;
   for (let i = 0; i < board.length; i++) {
     let rowIndex = i;
     if (includesThree(getRow(board, rowIndex)) === true) {
-      return returnVal
+      return true;
     }
   }
   for (let i = 0; i < board.length; i++) {
     let columnIndex = i;
     if (includesThree(getColumn(board, columnIndex)) === true) {
-      return returnVal
+      return true;
     }
   }
   if (includesThree(getDiagonalLeft(board)) === true) {
-    return returnVal
+    return true;
   }
   else if (includesThree(getDiagonalRight(board)) === true) {
-    return returnVal
+    return true;
   }
   else {
     return false;
   }
 }
-// console.log(checkForWin(x1))
 
-function congratulations(event) {
-  if (checkForWin(gameState.board) === true) {
-    event.target.innerHTML = gameState.endingMessage[0]
-  }
+function congratulationsMessage() {
+    document.getElementById("endingMessage").innerHTML = "Congratulations!";
 }
 
-function draw(event) {}
+function anyNullsLeft(board) {
+  for (let i = 0; i < board.length; i++) {
+    if (board[i][0] === null) {
+      return false;
+    }
+    if (board[i][1] === null) {
+      return false;
+    }
+    if (board[i][2] === null) {
+      return false;
+    }
+  }
+  return true;
+}
 
-function emptyBoardandPlayers() {}
+function drawMessage() {
+  document.getElementById("endingMessage").innerHTML = "Draw";
+}
 
 function boardClick(event) {
-  updateGameState(event)
-  let win = checkForWin(gameState.board)
-  if (win) {
-    congratulations()
+  let rowIndex = event.target.closest("tr").rowIndex;
+  let cellIndex = event.target.closest("td").cellIndex;
+  gameState.board[rowIndex][cellIndex] = gameState.players[gameState.activePlayer];
+  updateGameState(event);
+  if (checkForWin(gameState.board)) {
+    congratulationsMessage();
   }
-  // else {
-    // change activePlayer
-    // changeTurn()
-  // }
+  else if(anyNullsLeft(gameState.board)) {
+    drawMessage();
+  }
 }
 
-const gameArea = document.getElementById("board");
-gameArea.addEventListener("click", boardClick); 
-// const ending = document.getElementById("endingMessage");
-// ending.addEventListener("show", congratulations)
+const cells = document.querySelectorAll('td');
+for (let i = 0; i < cells.length; i++) {
+  let cell = cells[i];
+  cell.addEventListener("click", boardClick);
+}
